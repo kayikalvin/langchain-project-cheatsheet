@@ -23,6 +23,7 @@ pip install chromadb  # for vector storage
 pip install accelerate  # for model optimization
 pip install bitsandbytes  # for quantization
 pip install ctransformers  # for GGML models
+````
 Environment Setup
 # .env file
 HUGGINGFACE_API_TOKEN=your_token_here  # Optional for private models
