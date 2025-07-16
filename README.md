@@ -686,6 +686,7 @@ ________________________________________
 Advanced Projects
 7. Multi-Agent RAG System
 Difficulty: Advanced Description: Create a multi-agent system with specialized AI agents for different tasks.
+```bash
 from langchain.agents import Tool, AgentExecutor, LLMSingleActionAgent
 from langchain.agents.agent_types import AgentType
 from langchain.agents import initialize_agent
@@ -845,8 +846,10 @@ for query in queries:
     print(f"Query: {query}")
     print(f"Agent: {result['agent_used']}")
     print(f"Result: {result['result']}\n")
+```
 8. Advanced Document Processing Pipeline
 Difficulty: Advanced Description: Process various document formats with advanced chunking and metadata extraction.
+```bash
 from langchain.document_loaders import (
     PyPDFLoader, TextLoader, CSVLoader, 
     UnstructuredMarkdownLoader, JSONLoader
@@ -1133,8 +1136,10 @@ for doc in results:
 # Generate summary
 summary = processor.generate_document_summary("./documents/report.pdf")
 print(f"Document Summary: {summary}")
+```
 9. Real-time Chat with Memory and Context
 Difficulty: Advanced Description: Create a sophisticated chat system with long-term memory and context awareness.
+```bash
 from langchain.memory import ConversationSummaryBufferMemory
 from langchain.schema import BaseMemory
 from langchain.llms import CTransformers
@@ -1391,10 +1396,12 @@ while True:
         print("Assistant: ", end="")
         response = chat_system.chat(user_input)
         print()  # New line after streaming response
+```
 ________________________________________
 Best Practices & Optimization
 Performance Optimization
 1.	Model Quantization
+```bash
 # Use 4-bit quantization for better performance
 from transformers import BitsAndBytesConfig
 
@@ -1404,8 +1411,11 @@ quantization_config = BitsAndBytesConfig(
     bnb_4bit_quant_type="nf4",
     bnb_4bit_compute_dtype=torch.bfloat16
 )
+```
 2.	Efficient Chunking
 # Use semantic chunking for better context
+```bash
+
 from langchain.text_splitter import SentenceTransformersTokenTextSplitter
 
 splitter = SentenceTransformersTokenTextSplitter(
@@ -1413,7 +1423,10 @@ splitter = SentenceTransformersTokenTextSplitter(
     tokens_per_chunk=256,
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
+```
 3.	Caching Strategy
+```bash
+
 from langchain.cache import InMemoryCache
 from langchain.globals import set_llm_cache
 
@@ -1428,8 +1441,11 @@ def cleanup_memory():
     gc.collect()
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
+```
 Error Handling
 # Robust error handling pattern
+```bash
+
 def safe_llm_call(llm, prompt, max_retries=3):
     for attempt in range(max_retries):
         try:
@@ -1438,6 +1454,7 @@ def safe_llm_call(llm, prompt, max_retries=3):
             if attempt == max_retries - 1:
                 raise e
             time.sleep(2 ** attempt)  # Exponential backoff
+```
 ________________________________________
 Open Source Resources
 Recommended Models
