@@ -33,6 +33,7 @@ HUGGINGFACE_API_TOKEN=your_token_here  # Optional for private models
 Basic Projects
 1. Simple Chat Bot
 Difficulty: Beginner Description: A basic chatbot using local Llama model via Hugging Face transformers.
+```bash
 import os
 from dotenv import load_dotenv
 from langchain.llms import HuggingFacePipeline
@@ -92,8 +93,10 @@ if __name__ == "__main__":
         
         response = bot.chat(user_input)
         print(f"Bot: {response}")
+````
 1b. Optimized Llama Chat Bot (Using GGML)
 Difficulty: Beginner Description: More efficient chat bot using quantized Llama models.
+```bash
 from langchain.llms import CTransformers
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
@@ -126,8 +129,10 @@ You are a helpful assistant.
 # Usage
 bot = OptimizedLlamaBot()
 response = bot.chat("Explain quantum computing simply")
+```
 2. Text Summarizer
 Difficulty: Beginner Description: Summarize long texts using open-source models.
+```bash
 from langchain.chains.summarize import load_summarize_chain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
@@ -199,8 +204,10 @@ print(f"Short Summary: {summary}")
 long_text = """Your very long text here..."""
 summary = summarizer.summarize_long(long_text)
 print(f"Long Summary: {summary}")
+```
 3. Q&A System with Documents
 Difficulty: Beginner-Intermediate Description: Create a Q&A system using open-source embeddings and Llama.
+```bash
 from langchain.document_loaders import TextLoader
 from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -285,10 +292,12 @@ qa_system = DocumentQA("path/to/your/document.txt")
 result = qa_system.ask_question("What is the main topic of the document?")
 print(f"Answer: {result['answer']}")
 print(f"Sources: {len(result['sources'])} documents found")
+```
 ________________________________________
 Intermediate Projects
 4. Multi-Document Chat System
 Difficulty: Intermediate Description: Chat with multiple documents using advanced retrieval techniques.
+```bash
 from langchain.document_loaders import DirectoryLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
@@ -420,9 +429,11 @@ print(f"Follow-up: {response2['answer']}")
 relevant = chat_system.get_relevant_docs("specific topic")
 for doc in relevant:
     print(f"Source: {doc.metadata}")
+```
 
 5. Code Analysis and Generation Tool
 Difficulty: Intermediate Description: Analyze and generate code using CodeLlama model.
+```bash
 from langchain.llms import CTransformers
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
@@ -467,6 +478,7 @@ You are an expert Python code analyzer. Analyze the following code and provide:
 3. Optimization suggestions
 4. Best practices recommendations
 <</SYS>>
+```
 
 Code to analyze:
 ```python
@@ -525,6 +537,7 @@ Generate new code
 new_code = analyzer.generate_code("A function to calculate fibonacci numbers efficiently") print(f"Generated Code:\n{new_code}")
 Explain code
 explanation = analyzer.explain_code(""" def quicksort(arr): if len(arr) <= 1: return arr pivot = arr[len(arr) // 2] left = [x for x in arr if x < pivot] middle = [x for x in arr if x == pivot] right = [x for x in arr if x > pivot] return quicksort(left) + middle + quicksort(right) """) print(f"Code Explanation:\n{explanation}")
+```
 
 ### 6. Web Scraping and Analysis System
 **Difficulty: Intermediate-Advanced**
@@ -653,8 +666,6 @@ Please provide a comprehensive comparison. [/INST]"""
             "comparison": comparison
         }
 
-LangChain Projects Cheat Sheet (Continuation)
-Completing Web Scraping Project
 # Usage
 analyzer = WebAnalyzer()
 
@@ -670,6 +681,7 @@ urls = [
 ]
 comparison = analyzer.compare_websites(urls)
 print(f"Comparison: {comparison['comparison']}")
+```
 ________________________________________
 Advanced Projects
 7. Multi-Agent RAG System
